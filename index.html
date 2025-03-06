@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Symptom Checker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>AI Symptom Checker</h2>
+        <p>Enter your details and symptoms below:</p>
+
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="number" id="age" placeholder="Your Age" required>
+        <input type="number" id="weight" placeholder="Your Weight (kg)" required>
+        <div>
+            <label for="Symptom">Choose your symptom:</label>
+            <select id="Symptom" name="Symptom">
+                <option value="Acid Reflux">Acid Reflux</option>
+                <option value="Allergies">Allergies</option>
+                <option value="Anemia">Anemia</option>
+                <option value="Anxiety">Anxiety</option>
+                <option value="Arthritis">Arthritis</option>
+                <option value="Asthma">Asthma</option>
+                <option value="Back Pain">Back Pain</option>
+                <option value="Body Pain">Body Pain</option>
+                <option value="Bronchitis">Bronchitis</option>
+                <option value="Chickenpox">Chickenpox</option>
+                <option value="Chest Pain">Chest Pain</option>
+                <option value="Cold">Cold</option>
+                <option value="Constipation">Constipation</option>
+                <option value="Cough">Cough</option>
+                <option value="Dengue">Dengue</option>
+                <option value="Depression">Depression</option>
+                <option value="Diabetes">Diabetes</option>
+                <option value="Diarrhea">Diarrhea</option>
+                <option value="Dizziness">Dizziness</option>
+                <option value="Ear Infection">Ear Infection</option>
+                <option value="Epilepsy">Epilepsy</option>
+                <option value="Fatigue">Fatigue</option>
+                <option value="Fever">Fever</option>
+                <option value="Flu">Flu</option>
+                <option value="Food Poisoning">Food Poisoning</option>
+                <option value="Gallstones">Gallstones</option>
+                <option value="Headache">Headache</option>
+                <option value="Heartburn">Heartburn</option>
+                <option value="High Blood Pressure">High Blood Pressure</option>
+                <option value="Indigestion">Indigestion</option>
+                <option value="Insomnia">Insomnia</option>
+                <option value="Jaundice">Jaundice</option>
+                <option value="Kidney Infection">Kidney Infection</option>
+                <option value="Liver Disease">Liver Disease</option>
+                <option value="Malaria">Malaria</option>
+                <option value="Measles">Measles</option>
+                <option value="Migraine">Migraine</option>
+                <option value="Nausea">Nausea</option>
+                <option value="Pneumonia">Pneumonia</option>
+                <option value="Shortness of Breath">Shortness of Breath</option>
+                <option value="Sinus Infection">Sinus Infection</option>
+                <option value="Skin Rash">Skin Rash</option>
+                <option value="Sore Throat">Sore Throat</option>
+                <option value="Stomach Pain">Stomach Pain</option>
+                <option value="Typhoid">Typhoid</option>
+                <option value="Urinary Tract Infection">Urinary Tract Infection</option>
+                <option value="Vomiting">Vomiting</option>
+                <option value="Whooping Cough">Whooping Cough</option>
+            </select>
+        </div>
+        
+        <button onclick="analyzeSymptoms()" href="fever.html">Check Symptoms</button>
+
+        <div class="result" id="result">
+            <h3>Analysis Result</h3>
+            <p><strong>Possible Illness:</strong> <span id="illness"></span></p>
+            <p><strong>Causes:</strong> <span id="causes"></span></p>
+            <p><strong>Precautions:</strong> <span id="precautions"></span></p>
+            <p><strong>Advice:</strong> <span id="advice"></span></p>
+        </div>
+
+        <div class="images">
+            <img src="https://source.unsplash.com/featured/?senior-citizen" alt="Senior Citizen">
+            <img src="https://source.unsplash.com/featured/?adult" alt="Adult">
+            <img src="https://source.unsplash.com/featured/?child" alt="Child">
+            <img src="https://source.unsplash.com/featured/?medicine" alt="Medicine">
+        </div>
+    </div>
+<script>
+function analyzeSymptoms() {
+            const name = document.getElementById("name").value;
+            const age = document.getElementById("age").value;
+            const weight = document.getElementById("weight").value;
+            const symptoms = document.getElementById("Symptom").value;
+
+            if (!name || !age || !weight || !symptoms) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            fetch("https://your-app.onrender.com/analyze", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ symptoms: "Cough" })
+})
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error("Error:", error));
+
+        }
+</script>
+</body>
+</html>
