@@ -99,16 +99,21 @@ function analyzeSymptoms() {
                 return;
             }
 
-            fetch("https://your-app.onrender.com/analyze", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ symptoms: "Cough" })
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error("Error:", error));
-
-        }
+            fetch("http://localhost:5000/analyze", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name, age, weight, symptoms })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("illness").innerText = data.illness;
+                document.getElementById("causes").innerText = data.causes;
+                document.getElementById("precautions").innerText = data.precautions;
+                document.getElementById("advice").innerText = data.advice;
+                document.getElementById("result").style.display = "block";
+            })
+            .catch(error => console.error("Error:", error));
+ }
 </script>
 </body>
 </html>
